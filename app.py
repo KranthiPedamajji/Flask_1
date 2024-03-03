@@ -12,7 +12,7 @@ movie_db = MovieDatabase.MovieDatabase()
 
 @app.route('/')
 def index():
-    """Render the index page."""
+    """Rendering the index page."""
     return render_template('index.html')
 
 def load_all_movies():
