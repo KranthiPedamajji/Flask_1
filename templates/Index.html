@@ -5,6 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Database</title>
+
+    <style>
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        select, button {
+            padding: 8px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
     <h1>Movie Database</h1>
@@ -12,10 +53,6 @@
     <form method="post" action="/load_movies">
         <button type="submit">Load Movies</button>
     </form>
-
-
-    <br>
-    <br>
 
     <form action="/movies" method="post">
         <label for="year">Select Year:</label>
@@ -36,9 +73,6 @@
         <button type="submit">Get Movies</button>
     </form>
 
-    <br>
-    <br><br>
-    <br>
     <form method="get" action="/plot_movies">
         <button type="submit">Generate Movie Plot</button>
     </form>
