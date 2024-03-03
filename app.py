@@ -1,6 +1,6 @@
 import Models.MovieDatabase as MovieDatabase
 import json
-from flask import Flask, Response, redirect, render_template, request, send_file
+from flask import Flask, Response, redirect, render_template, request
 from functools import wraps
 import time
 import matplotlib.pyplot as plt
