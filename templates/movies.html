@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Database - Movies</title>
+</head>
+<body>
+    <h1>Movies</h1>
+
+    <!-- <pre>Debug - movies structure: {{ movies | tojson(indent=2) }}</pre> -->
+
+    <ul>
+        {% for movie in movies['movie_results'] %}
+            <li>{{ movie.title }} - {{ movie.year }} (IMDB ID: {{ movie.imdb_id }})</li>
+        {% endfor %}
+    </ul>
+    
+    <p>Time taken by get_and_store_movies: {{ timing_info.get('get_and_store_movies', 0.0) }} seconds</p>
+
+    <a href="/">Back to Home</a>
+</body>
+</html>
