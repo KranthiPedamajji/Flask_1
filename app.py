@@ -108,5 +108,47 @@ def plot_movies():
     img_data = plot_movies_by_year()
     return Response(img_data, content_type='image/png')
 
+
+def search_movies(search_query):
+    """Search movies within the loaded Redis data."""
+    search_results = []
+
+    # Iterate through movies for the years 2010 to 2024
+    for year in range(2010, 2025):
+        key = f'movies_{year}'
+        redis_data = movie_db.redis_client.get(key)
+
+        if redis_data:
+            movies = json.loads(redis_data)
+
+            # Filter movies based on the search query
+            if 'movie_results' in movies:
+                year_result = {
+                    'year': year,
+                    'movies': [
+                        movie for movie in movies['movie_results']
+                        if search_query.lower() in movie.get('title', '').lower()
+                    ]
+                }
+
+                # Append the year result only if there are matching movies
+                if year_result['movies']:
+                    search_results.append(year_result)
+    print(search_results)
+    return search_results
+
+
+@app.route('/search_movies', methods=['POST'])
+def search_movies_route():
+    """Handle the POST request to search for movies."""
+    search_query = request.form.get('search_query')
+
+    if search_query:
+        search_results = search_movies(search_query)
+        return render_template('search_results.html', search_results=search_results, search_query=search_query)
+
+    return redirect('/')
+
+
 if __name__ == '__main__':
     app.run(debug=True)

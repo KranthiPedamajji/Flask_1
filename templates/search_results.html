@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Database - Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+
+    <p>Search query: {{ search_query }}</p>
+
+    {% for result in search_results %}
+        <h2>Year: {{ result.year }}</h2>
+        <ul>
+            {% for movie in result.movies %}
+                <li>{{ movie.title }} (IMDB ID: {{ movie.imdb_id }})</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+
+    <a href="/">Back to Home</a>
+</body>
+</html>
